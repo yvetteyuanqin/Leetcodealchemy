@@ -1,0 +1,127 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNextInt()) {//注意while处理多个case
+            int a = in.nextInt();
+            int b = in.nextInt();
+            System.out.println(a + b);
+        }
+    }
+}
+
+
+
+// 本题为考试多行输入输出规范示例，无需提交，不计分。
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int ans = 0, x;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                x = sc.nextInt();
+                ans += x;
+            }
+        } 
+        System.out.println(ans);
+    }
+}
+
+//求最大成绩
+
+来源：牛客网
+
+import java.util.Scanner;
+import java.util.ArrayList;
+ 
+public class Main {
+ 
+     public static void main(String[] args)throws Exception{
+         Scanner s = new Scanner(System.in);
+         int[] data = new int[2];
+         do{
+         data[0] = s.nextInt();
+         data[1] = s.nextInt();
+         ArrayList<Integer> array = new ArrayList<Integer>();
+         for(int i = 0; i < data[0]; i ++){
+             array.add(s.nextInt());
+         }
+         int num = 0;
+         char a ;
+         int b,c;
+         while(num < data[1]){
+             a = s.next().charAt(0);
+             b = s.nextInt();
+             c = s.nextInt();
+             if('Q' == a){
+                 int start, end;
+                 if(b <= c){
+                 start = b - 1;
+                 end = c - 1;
+                 }else{
+                     start = c - 1;
+                     end = b - 1;
+                 }
+                 int max = array.get(start);
+                 for(int index = start; index <= end; index ++){
+                     if(array.get(index) >= max)
+                         max = array.get(index);
+                 }
+                 //result.add(max);
+                 System.out.println(max);
+             }
+             if('U' == a){
+                 int index1 = b - 1;
+                 int newValue = c;
+                 array.set(index1, newValue);
+             }
+             s.nextLine();
+             num ++;
+         }
+         }while(s.hasNext());
+         s.close();
+              
+    }
+}
+
+发表于 2015-08-24 21:25:52
+
+//求重复字母 输入输出
+
+public static void main(String[] args) {
+    /*Scanner sc=new Scanner(System.in);
+    System.out.println("请输入字符串：");
+    String str=sc.next();*/
+    String str="aabbccdef";
+    Set<Character> s1=new HashSet<Character>();//每个字符只出现一次
+    Set<Character> s2=new HashSet<Character>();
+    Set<Character> s3=new HashSet<Character>();
+    char[] ch= str.toCharArray();
+    for (char c : ch) {
+        boolean b=s1.add(c);
+        if(!b){
+            s2.add(c);
+        }
+    }
+
+    System.out.println("=====只出现一次的字符====");
+    s3.addAll(s1);
+    s3.removeAll(s2);
+    for (char c : s3) {
+        System.out.println(c+" ");
+    }
+    System.out.println("===出现一次以上的字符===");
+    for (char c : s2) {
+        System.out.println(c+" ");
+    }
+
+
+    System.out.println("==每个字符只出现一次===");
+    for (char c : s1) {
+        System.out.print(c+" ");
+    }
+
+}
